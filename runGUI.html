@@ -1,0 +1,79 @@
+<html>
+	<head>
+	<title>JSON</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+	
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/>
+	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		$.getJSON("http://localhost:5000/view/csvdata", function(response){
+			var employee_data='';
+
+			$.each(response,function(key, value){
+				console.log(value.EMP_NAME);
+
+				employee_data += '<tr>';
+				employee_data += '<td>'+value.EMP_NAME+'</td>';
+				employee_data += '<td>'+value.LOCAL_PATH+'</td>';
+				employee_data += '<td>'+value.IMAGE_URL+'</td>';
+				employee_data += '<td>'+value.TYPE_CODE+'</td>';
+
+			});
+			//get json data in response variable
+			 $('#employee_table').DataTable({
+				"data":response,
+				"columns":[
+
+				{"data":"EMP_NAME"},
+				{"data":"LOCAL_PATH"},
+				{"data":"IMAGE_URL"},
+				{"data":"TYPE_CODE"}
+				]
+			});
+
+		});
+
+	});
+
+</script>
+
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="table-responsive">
+				<h1>Rest API consumption on front end.</h1>
+				<br />
+
+				<table class="table table-bordered table-striped" id="employee_table">
+					<thead>
+					<tr>
+						<th>EMP_NAME</th>
+						<th>LOCAL_PATH</th>
+						<th>IMAGE_URL</th>
+						<th>TYPE_CODE</th>
+					</tr>
+
+				</thead>
+				<tbody>
+					
+
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+				</table>
+
+			</div>
+		</div>
+	</body>
+	</body>
+
+</html>
+
