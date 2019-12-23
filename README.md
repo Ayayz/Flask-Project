@@ -1,2 +1,2 @@
 # Flask-Project
-Flask Project to create the restful api using GET endpoints /view/csvdata
+Flask Project to create the REST API using GET endpoints /view/csvdata
